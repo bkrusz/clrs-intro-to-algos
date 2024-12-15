@@ -3,16 +3,10 @@ package main
 import "fmt"
 
 func insertionSort(slice []int) {
-  for i, v := range slice {
-    if (i == 0) { continue }
-    key := v
-    j := i-1
-    for {
-      if (j < 0 || slice[j] < key) { break }
-      slice[j+1] = slice[j]
-      j--
+  for i := 0; i < len(slice); i++ {
+    for j := i; j > 0 && slice[j-1] > slice[j]; j-- {
+      slice[j], slice[j-1] = slice[j-1], slice[j]
     }
-    slice[j+1] = key
   }
 }
 
